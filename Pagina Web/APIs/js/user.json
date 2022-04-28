@@ -1,0 +1,10 @@
+{
+  "user": "Luis José",
+  "person": {
+    "id": 12345,
+    "nickName": "Luis José",
+    "score": 3200,
+    "progress": "32%",
+    "time" : 3:00
+  }
+}
