@@ -63,45 +63,45 @@ from .models import usuario
 #     return render(request, 'pages/signup.html', {'form':form})
 
 def dashBoard(request):
-    mydb = sqlite3.connect("db.sqlite3")
-    curr = mydb.cursor()
+    # mydb = sqlite3.connect("db.sqlite3")
+    # curr = mydb.cursor()
 
-    query_progress = '''SELECT usuario, progresoPorcentual, score FROM pages_usuario ORDER BY progresoPorcentual DESC'''
-    rows1 = curr.execute(query_progress)
-    data_progress = []
+    # query_progress = '''SELECT usuario, progresoPorcentual, score FROM pages_usuario ORDER BY progresoPorcentual DESC'''
+    # rows1 = curr.execute(query_progress)
+    # data_progress = []
 
     
 
-    for x in rows1:
-        data_progress.append([  x[0], x[1],x[2]])
+    # for x in rows1:
+    #     data_progress.append([  x[0], x[1],x[2]])
 
-    query_instrument = '''SELECT nombre, tiempoMinutos FROM instrumento'''
-    rows2 = curr.execute(query_instrument)
-    data_intrument = [['Instruments', 'Minutes']]
+    # query_instrument = '''SELECT nombre, tiempoMinutos FROM instrumento'''
+    # rows2 = curr.execute(query_instrument)
+    # data_intrument = [['Instruments', 'Minutes']]
 
-    for x in rows2:
-        data_intrument.append([x[0],x[1]])
+    # for x in rows2:
+    #     data_intrument.append([x[0],x[1]])
 
-    query_pregunta = '''SELECT mensaje FROM pregunta'''
-    query_quiz = '''SELECT correcto, incorrecto FROM quiz'''
+    # query_pregunta = '''SELECT mensaje FROM pregunta'''
+    # query_quiz = '''SELECT correcto, incorrecto FROM quiz'''
 
-    row3 = curr.execute(query_pregunta)
-    curr2 = mydb.cursor()
-    row4 = curr2.execute(query_quiz)
+    # row3 = curr.execute(query_pregunta)
+    # curr2 = mydb.cursor()
+    # row4 = curr2.execute(query_quiz)
 
-    data_question = [['Question', 'Correct', 'Incorrect']]
+    # data_question = [['Question', 'Correct', 'Incorrect']]
 
-    for x in row3:
-        data_quiz = []
-        data_quiz.append(x[0])
+    # for x in row3:
+    #     data_quiz = []
+    #     data_quiz.append(x[0])
         
-        for i in row4:
-            data_quiz.append(i[0])
-            data_quiz.append(i[1])
-            break
-        data_question.append(data_quiz)
+    #     for i in row4:
+    #         data_quiz.append(i[0])
+    #         data_quiz.append(i[1])
+    #         break
+    #     data_question.append(data_quiz)
 
-    return render(request, 'pages/dashBoard.html', {'values':data_progress, 'values2':data_intrument, 'data_quiz':data_question})
+    # return render(request, 'pages/dashBoard.html', {'values':data_progress, 'values2':data_intrument, 'data_quiz':data_question})
 
 # def logout_user(request):
 #     logout(request)
