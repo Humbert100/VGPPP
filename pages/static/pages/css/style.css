@@ -226,7 +226,7 @@ svg {
     display: block;
     height: 100%;
     margin: 0 auto;
-    max-width: 80%;
+    max-width: 109%;
 }
 
 /*--------------------------------------------------------------
@@ -608,7 +608,7 @@ svg {
 
 .row.header {
     color: #353535;
-    background: #6c7ae0;
+    background: #b73131;
 }
 
 
