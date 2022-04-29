@@ -67,8 +67,8 @@
           var options = {
             chart: {
               title: 'User and Played Minutes',
-            },
-            bars: 'horizontal' // Required for Material Bar Charts.
+              chartArea: {width: '100%', height: '100%'},
+            bars: 'vertical' // Required for Material Bar Charts.
           };
       
           var chart = new google.charts.Bar(document.getElementById('chart_div_minutes'));
@@ -139,7 +139,7 @@
         </div>
     </div>
 
-    <div id="chart_div_score"></div>
+    <div id="chart_div_score" style="height: auto;"></div>
     <div id="chart_div_progress"></div>
     <div id="chart_div_minutes"></div>
 

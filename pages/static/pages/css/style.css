@@ -142,7 +142,7 @@ html {
 *,
 *:before,
 *:after {
-    box-sizing: inherit;
+    box-sizing: border-box;
 }
 
 body {
@@ -224,7 +224,7 @@ small {
 img,
 svg {
     display: block;
-    height: auto;
+    height: 100%;
     margin: 0 auto;
     max-width: 80%;
 }
