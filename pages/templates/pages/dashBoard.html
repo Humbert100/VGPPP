@@ -22,78 +22,61 @@
         google.charts.setOnLoadCallback(drawChart);
   
         function drawChart() {
-            var data = google.visualization.arrayToDataTable({{values|safe}});
+            var data = google.visualization.arrayToDataTable({{score|safe}});
   
           var options = {
             chart: {
-              title: 'Company Performance',
-              subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+              title: 'User and Minutes',
             },
             bars: 'horizontal' // Required for Material Bar Charts.
           };
   
-          var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+          var chart = new google.charts.Bar(document.getElementById('chart_div_score'));
   
           chart.draw(data, options);
         }
     </script>
+
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['bar']});
+        google.charts.setOnLoadCallback(drawChart);
     
-    <script>
-        google.charts.load('current', {packages: ['corechart', 'bar']});
-        google.charts.setOnLoadCallback(drawBasic);
-
-
-        function drawBasic() {
-
-            var data = google.visualization.arrayToDataTable({{values2|safe}});
-
-            var options = { 
-                title: 'Intruments Played',
-                chartArea: {width: '40%'},
-                hAxis: {
-                title: 'Intruments',
-                minValue: 0
-                },
-                width: 1500,
-                height: 400,
-                vAxis: {
-                title: 'Minutes'
-                }
-            };
-
-            var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-
-            chart.draw(data, options);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable({{progress|safe}});
+        
+          var options = {
+            chart: {
+              title: 'User and Porcentual Progress',
+            },
+            bars: 'horizontal' // Required for Material Bar Charts.
+          };
+      
+          var chart = new google.charts.Bar(document.getElementById('chart_div_progress'));
+      
+          chart.draw(data, options);
         }
     </script>
 
-    <script>
-    google.charts.load('current', {packages: ['corechart', 'bar']});
-    google.charts.setOnLoadCallback(drawBarColors);
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['bar']});
+        google.charts.setOnLoadCallback(drawChart);
 
-    function drawBarColors() {
-        var data = google.visualization.arrayToDataTable({{data_quiz|safe}});
-
-        var options = {
-            title: 'Quiz data',
-            chartArea: {width: '40%'},
-            colors: ['green', 'red'],
-            hAxis: {
-            minValue: 0
-            },
-            width: 1500,
-            height: 400,
-            vAxis: {
-            title: 'Quiz'
-            }
-        };
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable({{minutes|safe}});
         
-        var chart = new google.visualization.BarChart(document.getElementById('chart_div_questions'));
-        chart.draw(data, options);
-    }
+          var options = {
+            chart: {
+              title: 'User and Played Minutes',
+            },
+            bars: 'horizontal' // Required for Material Bar Charts.
+          };
+      
+          var chart = new google.charts.Bar(document.getElementById('chart_div_minutes'));
+      
+          chart.draw(data, options);
+        }
     </script>
-
-
+    
 
 </head>
 
@@ -156,9 +139,9 @@
         </div>
     </div>
 
-    <div id="chart_div"></div>
-
-    <div id="chart_div_questions"></div>
+    <div id="chart_div_score"></div>
+    <div id="chart_div_progress"></div>
+    <div id="chart_div_minutes"></div>
 
 
 
