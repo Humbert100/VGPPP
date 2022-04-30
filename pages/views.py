@@ -27,8 +27,9 @@ def dashBoard(request):
     
 
     for x in register:
-        data_progress.append([  x[0], x[1],x[2],x[3]])
+        data_progress.append([  x[0], x[1], x[2], x[3]])
 #--------------------------------------------------INICIO---------------------------------------------
+#--------------------------------------------------Query of Score-------------------------------------
     consult_name_score = '''SELECT usuario, score FROM pages_usuario'''
 
 
@@ -37,10 +38,12 @@ def dashBoard(request):
 
     for x in register2:
         query_score.append([x[0],x[1]])
+#--------------------------------------------------FIN---------------------------------------------
+
 
 #--------------------------------------------------INICIO---------------------------------------------
 
-#--------------------------------------------------INICIO---------------------------------------------
+#--------------------------------------------------QUERY OF SCORE-------------------------------------
     consult_name_progresoPorcentual = '''SELECT usuario, progresoPorcentual FROM pages_usuario'''
     
 
@@ -49,9 +52,11 @@ def dashBoard(request):
 
     for x in register3:
         query_progresoPorcentual.append([x[0],x[1]])
-#--------------------------------------------------INICIO---------------------------------------------
+#--------------------------------------------------FIN---------------------------------------------
+
 
 #--------------------------------------------------INICIO---------------------------------------------
+#--------------------------------------------------QUERY OF MINUTES PLAYED-------------------------------------
     consult_name_minutosjugados = '''SELECT usuario, minutosJugados FROM pages_usuario'''
     
 
@@ -60,7 +65,7 @@ def dashBoard(request):
 
     for x in register4:
         query_minutosJugados.append([x[0],x[1]])
-#--------------------------------------------------INICIO---------------------------------------------
+#--------------------------------------------------FIN---------------------------------------------
 
 #A cada query se le asigna un nombre (string) para ser llamado al dashboard para su posterior graficación
 

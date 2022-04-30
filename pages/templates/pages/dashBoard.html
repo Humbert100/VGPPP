@@ -15,18 +15,20 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{% static 'pages/css/stylesAPIs.css' %}" rel="stylesheet" />
     <link rel="stylesheet" href="{% static 'pages/css/style.css' %}">
-
+    <!-- Google charts -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         google.charts.load('current', {'packages':['bar']});
         google.charts.setOnLoadCallback(drawChart);
-  
+//Bar graphic of user and score   
         function drawChart() {
             var data = google.visualization.arrayToDataTable({{score|safe}});
   
           var options = {
+              colors: getRandomColor(),
             chart: {
               title: 'User and Minutes',
+              //'fx06f45',
             },
             bars: 'horizontal' // Required for Material Bar Charts.
           };
@@ -36,15 +38,16 @@
           chart.draw(data, options);
         }
     </script>
-
+<!-- Google charts -->
     <script type="text/javascript">
         google.charts.load('current', {'packages':['bar']});
         google.charts.setOnLoadCallback(drawChart);
-    
+//Bar graphic of user and progress porcentual    
         function drawChart() {
             var data = google.visualization.arrayToDataTable({{progress|safe}});
         
           var options = {
+            colors: getRandomColor(),
             chart: {
               title: 'User and Porcentual Progress',
             },
@@ -56,17 +59,19 @@
           chart.draw(data, options);
         }
     </script>
-
+<!-- Google charts -->
     <script type="text/javascript">
         google.charts.load('current', {'packages':['bar']});
         google.charts.setOnLoadCallback(drawChart);
-
+//Bar graphic of user and minutes
         function drawChart() {
             var data = google.visualization.arrayToDataTable({{minutes|safe}})
         
           var options = {
+            colors: getRandomColor(),
             chart: {
               title: 'User and Porcentual Progress',
+
             },
             bars: 'horizontal' // Required for Material Bar Charts.
           };
@@ -76,24 +81,25 @@
           chart.draw(data, options);
         }
     </script>
+
+    <!-- Generate a randowm color -->
+    <!-- stackoverflow (User: BooYaKa) -->
+    <script>
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF'.split('');
+            var color = '#';
+            for (var i = 0; i < 6; i++ ) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+}
+    </script>
     
 
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container px-lg-5">
-            <a class="navbar-brand" href='{% url "dashBoard" %}'>PIM - PAM - PUM</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href='{% url "dashBoard" %}'>Home</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Header-->
+    <!-- Container of Header -->
     <header class="py-5">
         <div class="container px-lg-5">
             <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
@@ -104,7 +110,7 @@
             </div>
         </div>
     </header>
-
+    <!-- Container of main table -->
     <div class="container px-lg-5">
         <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
             <div class="container-table100">
@@ -121,8 +127,10 @@
                              <div class="cell">
                                  Score
                              </div>
+                             <div class="cell">
+                                Minutes played
+                            </div>
                          </div>
-         
                          {% for d in values  %}
                              <div class="row">
                                  {% for x in d %}
@@ -135,10 +143,24 @@
              </div>
         </div>
     </div>
+    <!-- Container of Graphics -->
+    <div class="container px-lg-5">
+        <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+            <h2>Graphics of: score, progress porcentual and minutes played.</h2>
+                <!-- Score -->
+            <div id="chart_div_score" style="width:90%; fill:rgb(36, 12, 17)"></div>
+            <br>
+            <h3 style="font-size:larger">1K = 1000</h3>
+            <br>
+            <!-- Progress Porcentual -->
+            <div id="chart_div_progress"style="width:90%; fill-color:rgb(244, 66, 104)"></div>
+            <br>
+            <br>
+            <!-- Minutes Played -->
+            <div id="chart_div_minutes"style="width:90%; fill-color:rgb(244, 66, 104)"></div>
+    </div>
 
-    <div id="chart_div_score" style="width:90%; fill-color:rgb(36, 12, 17)"></div>
-    <div id="chart_div_progress"style="width:90%; fill-color:rgb(244, 66, 104)"></div>
-    <div id="chart_div_minutes"style="width:90%; fill-color:rgb(244, 66, 104)"></div>
+
 
 
 
@@ -146,3 +168,4 @@
 </body>
 
 </html>
+
